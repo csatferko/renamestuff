@@ -1,3 +1,4 @@
+#! usr/bin python3
 # renamestuff 1.0
 
 import os, sys, time, datetime, shutil
