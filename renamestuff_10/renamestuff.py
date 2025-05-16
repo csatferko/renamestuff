@@ -1,4 +1,4 @@
-#! usr/bin python3
+#!/usr/bin/env python3
 # renamestuff 1.0
 
 import os, sys, time, datetime, shutil
@@ -23,7 +23,7 @@ print()
 while True:
     time.sleep(0.5)
     print('Provide the name of the source folder.')
-    srcFold = input()
+    srcFold = input('> ')
     srcPath = cwDir / Path(str(srcFold))
     if os.path.exists(srcPath) is True:
         break
@@ -34,7 +34,7 @@ while True:
 time.sleep(0.5)
 
 print('\nGive a scheme for the new filenames. (E.g.: "Zabhegyezes_Kukutyinban_").')
-nameScheme = input()
+nameScheme = input('> ')
 
 srcPath = cwDir / Path(str(srcFold))
 srcPath2 = os.path.join(srcPath, "")
@@ -65,7 +65,7 @@ print()
 time.sleep(0.5)
 
 print('Do you want a change log file? (yes/no):')
-logFile = input()
+logFile = input('> ')
 
 if logFile.lower() in ["y", "yes"] or logFile.upper() in ["Y", "YES"]:
     renameLog = open(cwDir / Path(str(logName)), 'w')
@@ -81,7 +81,7 @@ else:
 time.sleep(0.5)
 
 print('Do you want to save the renamed files in a separate folder? (yes/no):')
-newFold = input()
+newFold = input('> ')
 if newFold.lower() in ["y", "yes"] or newFold.upper() in ["Y", "YES"]:
     newfoldName = str(srcFold) + '_new_' + (str(timeStamp))
     destFolder = cwDir / Path(str(newfoldName))
