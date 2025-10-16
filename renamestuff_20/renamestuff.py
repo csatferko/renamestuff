@@ -1,14 +1,40 @@
 #!/usr/bin/env python3
-# renamestuff 1.0
+# renamestuff 2.0
 
-import os, sys, time, datetime, shutil
+import os, sys, time, datetime, shutil, openpyxl
 from pathlib import Path
 
 cwDir = os.path.dirname(os.path.abspath(sys.argv[0]))
 timeStamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 logName = 'renamestuff_log_' + str(timeStamp) + '.txt'
 
-print('\nrenamestuff 1.0\n')
+wb = openpyxl.load_workbook(cwDir / Path('dict.xlsx'))
+
+ws = wb['Sheet1']
+
+# cmn_0 = ws['A']    
+cmn_1 = ws['B']
+cmn_2 = ws['C']
+#cmn_3 = ws['D']    
+#cmn_4 = ws['E']
+#cmn_5 = ws['F']
+
+def nameDict(tup1, tup2):
+    if len(tup1) == len(tup2):
+        tupDict = {tup1[i] : tup2[i] for i, _ in enumerate(tup2)}
+        return tupDict
+    else:
+        print('Dictionary cannot be created. The script ends.\n')
+        time.sleep(5)
+        exit()
+renameDict = nameDict(cmn_1, cmn_2)       
+
+print(renameDict)    
+
+#%%
+    
+
+print('\nrenamestuff 2.0\n')
 print('The renamestuff tool renames all of the files in a given folder.')
 print('The source must be one level below the script (current working directory).')
 print('The new name scheme is amended by an ordinal number for each file. \n') 
