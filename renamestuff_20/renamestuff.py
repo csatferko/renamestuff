@@ -8,6 +8,11 @@ cwDir = os.path.dirname(os.path.abspath(sys.argv[0]))
 timeStamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 logName = 'renamestuff_log_' + str(timeStamp) + '.txt'
 
+print('Current working directory:')
+
+print(cwDir)
+print()
+
 wb = openpyxl.load_workbook(cwDir / Path('dict.xlsx'))
 
 ws = wb['Sheet1']
