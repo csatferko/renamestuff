@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+renamebydict.py beta
+
 Created on Fri Oct 17 08:20:03 2025
 
-@author: csf
+@author: csatferko
 """
 
 import os, sys, time, datetime, openpyxl
@@ -28,8 +30,8 @@ def renameFilesDict(src, lis, dic):
     for fileName in lis:
         if str(fileName) in dic:
             newName = dic.get(str(fileName))
-            old = src + fileName
-            new = src + newName
+            old = src + str(fileName)
+            new = src + str(newName)
             os.rename(old, new)
             print(fileName, " -----> ", newName)
 
@@ -72,21 +74,18 @@ time.sleep(0.5)
 
 srcPath = cwDir / Path(str(srcFold))
 srcPath2 = os.path.join(srcPath, "")
-# print(srcPath2)
 
 sourceFolder = str(srcPath)
 sourceFolder2 = str(srcPath2)
 
-#count = 1
 # iterate all files from a directory:
 listDir = os.listdir(sourceFolder)
 listDir.sort()
 
-#newfoldName = str(srcFold) + '_new_' + (str(timeStamp))
-#destFolder = cwDir / Path(str(newfoldName))
-#os.mkdir(destFolder)
-#destinationFolder1 = str(destFolder)
-         
+print()
+
 renameFilesDict(sourceFolder2, listDir, renameDict)
- 
-time.sleep(0.5)   
+
+print()
+
+time.sleep(5)   
