@@ -17,13 +17,15 @@ import os, sys, time, datetime, shutil, openpyxl
 from pathlib import Path
 
 def nameDict(tup1, tup2):
-    if len(tup1) == len(tup2):
-        l1 = []
-        for i in tup1:
+    l1 = []
+    for i in tup1:
+        if i.value != None:
             l1.append(i.value)
-        l2 = []
-        for j in tup2:
+    l2 = []
+    for j in tup2:
+        if j.value != None:
             l2.append(j.value)
+    if len(l1) == len(l2):
         tupDict = dict(zip(l1, l2))
         return tupDict
     else:
